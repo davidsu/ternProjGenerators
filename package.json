@@ -1,0 +1,22 @@
+{
+  "name": "ternprojgenerators",
+  "version": "1.0.0",
+  "description": "generate .tern-proj file for specific projects",
+  "main": "tern_proj_generator_santa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudavid4/ternProjGenerators.git"
+  },
+  "author": "David Susskind <susskinddavid@gmail.com> (https://github.com/sudavid4)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudavid4/ternProjGenerators/issues"
+  },
+  "homepage": "https://github.com/sudavid4/ternProjGenerators#readme",
+  "dependencies": {
+    "jsonfile": "^2.4.0"
+  }
+}
