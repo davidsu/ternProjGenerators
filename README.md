@@ -6,7 +6,8 @@ project specific generators for .tern-proj file
 generates .tern-proj files for various projects in which I work with.
 for each project there should be a file executable with the same name as the project.
 
-##Usage
+Usage
+-----
 
 --------------------------------------------------------------------------------
 you need to pipe the output to the relevant file.
@@ -14,7 +15,8 @@ you need to pipe the output to the relevant file.
     ./santa.js > ~/projects/santa/.tern-project
 ```
 
-###Note
+Note
+----
 
 --------------------------------------------------------------------------------
 some of the generated files might be excessively verbose with some useless data.
