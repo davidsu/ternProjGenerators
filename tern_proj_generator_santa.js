@@ -7,10 +7,14 @@ function run(baseDir) {
     spawn.on('close', function() {
         var resArr = result.split('\n')
         result = {
+            "ecmaVersion": 5,
             "libs": [
                 "browser"
             ],
             "plugins": {
+                "node": {},
+                "modules": {},
+                "es_modules": {},
                 "requirejs": {
                     "baseUrl": "./",
                     paths: {},
@@ -56,4 +60,6 @@ function run(baseDir) {
         result = result + data.toString('utf8');
     })
 }
-module.exports = {run}
+module.exports = {
+    run
+}
