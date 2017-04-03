@@ -8,19 +8,19 @@ function ignoreEntry(entry) {
 
 function run(baseDir) {
     var spawn = require('child_process').spawn;
-    spawn = spawn('find', [baseDir]);
+    spawn = spawn('ag', ['--nocolor', '-g', '.'], {cwd: baseDir});
     var result = '';
     spawn.on('close', function() {
         var resArr = result.split('\n')
         result = {
-            // "ecmaVersion": 5,
+            "ecmaVersion": 5,
             "libs": [
                 "browser"
             ],
             "plugins": {
-                // "node": {},
-                // "modules": {},
-                // "es_modules": {},
+                "node": {},
+                "modules": {},
+                "es_modules": {},
                 "requirejs": {
                     "baseUrl": "./",
                     paths: {},
