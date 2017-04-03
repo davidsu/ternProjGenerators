@@ -60,7 +60,7 @@ function run(baseDir) {
                     map[mapkey][key2] = curr.replace(/\.js$/, '');
 
 
-                    if (!paths[key2])
+                    if (!paths[key2] || (/packages/.test(curr) && !/packages/.test(paths[key2])) )
                         paths[key2] = curr.replace(/\.js$/, '');
                     else {
                         //todo delete key2 from global paths and blacklist it
