@@ -1,5 +1,11 @@
 #!/usr/bin/env node
  // usage: node tern_proj_generator.js `pwd`/packages > .tern-project
+function ignoreEntry(entry) {
+    if(/\.(html|scss|png|jpg)$/.test(entry))
+        return true
+    return false
+}
+
 function run(baseDir) {
     var spawn = require('child_process').spawn;
     spawn = spawn('find', [baseDir]);
@@ -25,28 +31,37 @@ function run(baseDir) {
         var paths = result.plugins.requirejs.paths;
         var map = result.plugins.requirejs.map;
         resArr.forEach(curr => {
-            if (/packages/.test(curr)) {
-                curr = curr.replace(/.*packages/, 'packages')
+            if (!ignoreEntry(curr)) {
+                // curr = curr.replace(/.*packages/, 'packages')
+                curr = curr.replace(baseDir + '/', '');
                 var key1 = curr.replace(/.*packages\/(.*)src\/main\/([^.]*)\.js$/, '$1$2')
                 var key2 = curr.replace(/.*\/([^/.]*)\.js$/, '$1');
                 if (key1 && key1 !== curr) {
-                    paths[key1] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
+                    paths[key1] = curr.replace(/\.js$/, '');
                 }
                 if (key2 && key2 !== curr) {
                     var mapkey = curr.replace(/.*(packages\/.*?)\/src\/main\/.*/, '$1')
                     map[mapkey] = map[mapkey] || {};
-                    map[mapkey][key2] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
+                    map[mapkey][key2] = curr.replace(/\.js$/, '');
+
+
                     mapkey = curr.replace(/.*packages\/(.*?)\/src\/main\/.*/, '$1')
                     map[mapkey] = map[mapkey] || {};
-                    map[mapkey][key2] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
-                    mapkey = curr.replace(/.*packages\/.*?\/src\/main\/([^/]).*/, '$1')
+                    map[mapkey][key2] = curr.replace(/\.js$/, '');
+
+
+                    mapkey = curr.replace(/.*packages\/.*?\/src\/main\/([^/]*).*/, '$1')
                     map[mapkey] = map[mapkey] || {};
-                    map[mapkey][key2] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
+                    map[mapkey][key2] = curr.replace(/\.js$/, '');
+
+
                     mapkey = curr.replace(/.*packages\/.*?\/src\/main\/(.*?)\/[^/].js$/, '$1')
                     map[mapkey] = map[mapkey] || {};
-                    map[mapkey][key2] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
+                    map[mapkey][key2] = curr.replace(/\.js$/, '');
+
+
                     if (!paths[key2])
-                        paths[key2] = curr.replace(__dirname + '/', '').replace(/\.js$/, '');
+                        paths[key2] = curr.replace(/\.js$/, '');
                     else {
                         //todo delete key2 from global paths and blacklist it
                     }
