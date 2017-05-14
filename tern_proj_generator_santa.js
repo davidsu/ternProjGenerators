@@ -6,7 +6,7 @@ function ignoreEntry(entry) {
     return false
 }
 
-function run(baseDir) {
+function run(baseDir, callback) {
     var spawn = require('child_process').spawn;
     spawn = spawn('ag', ['--nocolor', '-g', '.'], {cwd: baseDir});
     var result = '';
@@ -23,7 +23,9 @@ function run(baseDir) {
                 "es_modules": {},
                 "requirejs": {
                     "baseUrl": "./",
-                    paths: {},
+                    paths: {
+                        lodash: "./node_modules/lodash/core"
+                    },
                     map: {}
                 }
             }
@@ -69,7 +71,8 @@ function run(baseDir) {
             }
         })
 
-        console.log(JSON.stringify(result, null, 4))
+        callback(result)
+        // console.log(JSON.stringify(result, null, 4))
         // console.log(result.plugins.requirejs.paths)
     })
 

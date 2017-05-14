@@ -3,4 +3,4 @@
 const dotSanta = require('os').homedir() + '/.santa'
 const santaConfig = require('jsonfile').readFileSync(dotSanta)
 var runner = require('./tern_proj_generator_santa.js')
-runner.run(santaConfig['Santa-Editor'].location)
+runner.run(santaConfig['Santa-Editor'].location, result => console.log(JSON.stringify(result, null, 4)))
