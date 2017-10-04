@@ -13,9 +13,10 @@ function run(baseDir, callback) {
     spawn.on('close', function() {
         var resArr = result.split('\n')
         result = {
-            "ecmaVersion": 5,
+            "ecmaVersion": 8,
             "libs": [
-                "browser"
+                "browser",
+                "ecma6"
             ],
             "plugins": {
                 "node": {},
