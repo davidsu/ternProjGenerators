@@ -8,7 +8,7 @@ function ignoreEntry(entry) {
 
 function run(baseDir, callback) {
     var spawn = require('child_process').spawn;
-    spawn = spawn('ag', ['--nocolor', '-g', '.'], {cwd: baseDir});
+    spawn = spawn('ag --nocolor -g . && find js | grep js$', {cwd: baseDir, shell: true});
     var result = '';
     spawn.on('close', function() {
         var resArr = result.split('\n')
