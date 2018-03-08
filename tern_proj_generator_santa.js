@@ -14,10 +14,7 @@ function run(baseDir, callback) {
         var resArr = result.split('\n')
         result = {
             "ecmaVersion": 8,
-            "libs": [
-                "browser",
-                "ecma6"
-            ],
+            "libs": [],
             "plugins": {
                 "node": {},
                 "modules": {},
@@ -25,7 +22,8 @@ function run(baseDir, callback) {
                 "requirejs": {
                     "baseUrl": "./",
                     paths: {
-                        lodash: "./node_modules/lodash/core"
+                        lodash: "./node_modules/lodash/core",
+                        coreUtilsLib: "./node_modules/santa-core-utils/src/coreUtils/src/coreUtils"
                     },
                     map: {}
                 }
