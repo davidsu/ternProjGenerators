@@ -16,8 +16,8 @@ runner.run(baseDir, result => {
             }
         })
     }
-    require(baseDir + '/app/main-r-idea.js')
-    // console.log(JSON.stringify(requirejs, null, 4))
     console.log(JSON.stringify(result, null, 4))
+    require('./writeVsCodeConfig')(baseDir, result)
 })
+
 
